@@ -1,0 +1,29 @@
+mutation CREATE_USER($username: String!, $email: String!, $password: String!) {
+	createUser(NewUser: { email: $email, username: $username, password: $password }) {
+		user {
+			id
+			email
+			username
+			updatedAt
+			createdAt
+		}
+		message
+		success
+		access_token
+	}
+}
+
+mutation LOGIN_USER($email: String!, $password: String!) {
+	loginUser(LoginUser: { email: $email, password: $password }) {
+		user {
+			id
+			email
+			username
+			updatedAt
+			createdAt
+		}
+		message
+		success
+		access_token
+	}
+}
