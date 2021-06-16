@@ -1,10 +1,13 @@
 import React from 'react'
+import MainLayout from '../Layouts/mainlayout'
 
 function Home() {
     return (
-        <div>
-            HomePage
-        </div>
+       <MainLayout>
+           <div>
+               <h2>Home Page</h2>
+           </div>
+       </MainLayout>
     )
 }
 
