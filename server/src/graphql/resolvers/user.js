@@ -2,7 +2,18 @@ import { ApolloError } from 'apollo-server-errors';
 import bcrypt from 'bcrypt';
 import { assign_token } from '../../helpers/user';
 export default {
-	Query: {},
+	Query: {
+		auth_Profile:async(_,{},{user},info)=>{
+          return user;
+		},
+		get_all_users:async(_,_args,{User},info)=>{
+			
+			
+			const users = await User.paginate({},{limit:_args.limit,page:_args.page})
+			return users;
+
+		}
+	},
 	Mutation: {
 		createUser: async (_, { NewUser }, { User }, info) => {
 			try {

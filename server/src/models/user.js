@@ -1,5 +1,7 @@
 import {Schema,model} from 'mongoose'
 import bcrypt from 'bcrypt'
+import  mongoosePaginate  from 'mongoose-paginate-v2'
+import mongoose from 'mongoose'
 const userSchema = new Schema({
     username:{
         type:String,
@@ -15,8 +17,17 @@ const userSchema = new Schema({
         required:true,
         min:[8,'Password length must be greather than 8.']
     },
+    role:{
+        type:String,
+        enum:['admin','super_admin','seller','buyer'],
+        default:'buyer'
+    },
+    additional_info:{
+        type:mongoose.Types.ObjectId,
+        ref:'info'
+    }
 },{timestamps:true});
-
+userSchema.plugin(mongoosePaginate);
 userSchema.pre('save',function(next){
     var user =this;
     if(!user.isModified('password'))

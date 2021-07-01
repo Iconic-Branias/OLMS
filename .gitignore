@@ -1,2 +1,5 @@
 node_modules
 .env
+server/node_modules/.cache/esm/
+server/node_modules/.cache/esm/*
+server/node_modules/esm/node_modules/.cache/esm/.data.blob
